@@ -3,7 +3,8 @@ import os
 import time
 
 def limpar_tela():
-    time.sleep(2)
+    print("Voltando ao menu...")
+    time.sleep(3)
     os.system('cls' if os.name == 'nt' else 'clear')
 
 def menu():
@@ -23,17 +24,17 @@ def menu():
             
         elif opcao == '2':
             gestor.listar_tarefas()
+            limpa = input("Prima qualquer tecla para voltar ao menu...")
+            limpar_tela()
             
         elif opcao == '3':
             id = int(input("ID da tarefa a atualizar: "))
             gestor.atualizar_tarefa(id)
-            print("Voltando ao menu...")
             limpar_tela()
             
         elif opcao == '4':
             id = int(input("ID da tarefa a eliminar: "))
             gestor.eliminar_tarefa(id)
-            print("Voltando ao menu...")
             limpar_tela()
             
         elif opcao == '5':
@@ -41,7 +42,6 @@ def menu():
             break
         else:
             print("Opção inválida. Tentar novamente.")
-            print("Voltando ao menu...")
             limpar_tela()
 
 # Executa o menu

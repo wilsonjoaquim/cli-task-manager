@@ -1,4 +1,5 @@
 from tarefa import Tarefa
+from datetime import datetime
 
 class Gestor:
     def __init__(self):
@@ -7,14 +8,13 @@ class Gestor:
 
     def adicionar_tarefa(self, titulo, descricao, data_fim):
         tarefa = Tarefa(self.proximo_id, titulo, descricao, data_fim)
-        self.tarefas.append(tarefa)
-        self.proximo_id += 1
-        print("Tarefa adiocionada com sucesso!!!")
+        if tarefa == Tarefa:
+            self.tarefas.append(tarefa)
+            self.proximo_id += 1
 
     def listar_tarefas(self):
         if not self.tarefas:
             print("Nenhuma tarefa com cadastrada no sistema!")
-            
         else:
             for tarefa in self.tarefas:
                 print(tarefa)
@@ -32,7 +32,7 @@ class Gestor:
                 tarefa.concluida = True if concluida == 's' else False
                 print("Tarefa atualizada com sucesso!")
                 return
-            print("Tarefa não encontrada.")
+        print("Tarefa não encontrada.")
         
     def eliminar_tarefa(self, id):
             for tarefa in self.tarefas:
