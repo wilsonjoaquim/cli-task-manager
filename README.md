@@ -13,3 +13,5 @@ Interface de linha de comando simples e rápida
 Feito com dedicação por:
 - Wilson Joaquim 
 - Carlos Gomes
+
+  Carinhosamente acompanhado pelo Prof. Dr. Arlindo Almada
