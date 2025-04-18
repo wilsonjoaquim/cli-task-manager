@@ -4,7 +4,7 @@ import time
 
 def limpar_tela():
     print("Voltando ao menu...")
-    time.sleep(3)
+    time.sleep(0.5)
     os.system('cls' if os.name == 'nt' else 'clear')
 
 def menu():
@@ -28,14 +28,30 @@ def menu():
             limpar_tela()
             
         elif opcao == '3':
-            id = int(input("ID da tarefa a atualizar: "))
-            gestor.atualizar_tarefa(id)
-            limpar_tela()
+            try:
+                if gestor.listar_tarefas() == True:
+                    id = int(input("ID da tarefa a atualizar: "))
+                if gestor.encontrar_tarefa(id) == True:
+                    novo_titulo = input("Novo titulo: ")
+                    nova_descricao = input("Nova descrição: ")
+                    concluida = input("Está concluída? (s/n): ").lower()
+                    gestor.atualizar_tarefa(id, novo_titulo, nova_descricao, concluida)
+                else:
+                    print("Tarefa não encontrada")
+            except Exception as e:
+                print("Erro", e)
+            finally:
+                limpar_tela()
             
         elif opcao == '4':
-            id = int(input("ID da tarefa a eliminar: "))
-            gestor.eliminar_tarefa(id)
-            limpar_tela()
+            try:
+                if gestor.listar_tarefas() == True:
+                    id = int(input("ID da tarefa a eliminar: "))
+                    gestor.eliminar_tarefa(id)
+            except Exception as e:
+                print("Erro",e)
+            finally:
+                limpar_tela()
             
         elif opcao == '5':
             print("Saindo...")
